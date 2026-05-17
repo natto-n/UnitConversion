@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>プライバシーポリシー / Privacy Policy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent: #4A90E2;
+      --accent-light: #e8f1fb;
+      --text: #1a1a2e;
+      --text-secondary: #5a6070;
+      --bg: #f7f9fc;
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', 'Noto Sans JP', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    /* ── ヘッダー ── */
+    header {
+      background: linear-gradient(135deg, var(--accent) 0%, #2563c7 100%);
+      padding: 60px 24px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    header .icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+      display: block;
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    header h1 {
+      font-size: clamp(22px, 5vw, 32px);
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.3px;
+    }
+    header p.subtitle {
+      color: rgba(255,255,255,0.8);
+      font-size: 14px;
+      margin-top: 8px;
+    }
+
+    /* ── 言語切替 ── */
+    .lang-toggle {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding: 20px 24px 0;
+    }
+    .lang-btn {
+      padding: 8px 20px;
+      border: 2px solid var(--accent);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .lang-btn.active {
+      background: var(--accent);
+      color: #fff;
+    }
+    .lang-btn:hover:not(.active) {
+      background: var(--accent-light);
+    }
+
+    /* ── メインコンテンツ ── */
+    main {
+      max-width: 760px;
+      margin: 32px auto 60px;
+      padding: 0 20px;
+    }
+
+    .updated-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 24px;
+    }
+
+    /* ── セクションカード ── */
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin-bottom: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      animation: slideUp 0.4s ease both;
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .card:nth-child(2) { animation-delay: 0.05s; }
+    .card:nth-child(3) { animation-delay: 0.10s; }
+    .card:nth-child(4) { animation-delay: 0.15s; }
+    .card:nth-child(5) { animation-delay: 0.20s; }
+    .card:nth-child(6) { animation-delay: 0.25s; }
+    .card:nth-child(7) { animation-delay: 0.30s; }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .card-icon {
+      width: 40px; height: 40px;
+      background: var(--accent-light);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .card h2 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .card p, .card li {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.85;
+    }
+    .card ul {
+      padding-left: 20px;
+      margin-top: 8px;
+    }
+    .card li { margin-bottom: 6px; }
+
+    .highlight-box {
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      padding: 14px 18px;
+      border-radius: 0 10px 10px 0;
+      margin-top: 12px;
+      font-size: 14px;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* ── 連絡先カード ── */
+    .contact-card {
+      background: linear-gradient(135deg, var(--accent) 0%, #2563c7 100%);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin-bottom: 16px;
+      text-align: center;
+      color: #fff;
+    }
+    .contact-card h2 { color: #fff; font-size: 18px; margin-bottom: 8px; }
+    .contact-card p  { color: rgba(255,255,255,0.85); font-size: 14px; margin-bottom: 16px; }
+    .contact-card a {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 24px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 14px;
+      border: 1px solid rgba(255,255,255,0.3);
+      transition: background 0.2s;
+    }
+    .contact-card a:hover { background: rgba(255,255,255,0.3); }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: var(--text-secondary);
+      font-size: 13px;
+    }
+
+    /* ── 言語切替ロジック ── */
+    [data-lang="en"] { display: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <span class="icon">🔒</span>
+  <h1 data-lang="ja">プライバシーポリシー</h1>
+  <h1 data-lang="en" style="display:none">Privacy Policy</h1>
+  <!-- ↓ アプリ名を変更してください -->
+  <p class="subtitle" data-lang="ja">単位変換アプリ</p>
+  <p class="subtitle" data-lang="en" style="display:none">Unit Converter App</p>
+</header>
+
+<div class="lang-toggle">
+  <button class="lang-btn active" onclick="setLang('ja')">日本語</button>
+  <button class="lang-btn" onclick="setLang('en')">English</button>
+</div>
+
+<main>
+  <div class="updated-badge">
+    📅 <span data-lang="ja">最終更新：2026年5月17日</span>
+       <span data-lang="en" style="display:none">Last Updated: May 17, 2026</span>
+  </div>
+
+  <!-- 1. はじめに -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon">📋</div>
+      <!-- ↓ セクションタイトル -->
+      <h2 data-lang="ja">はじめに</h2>
+      <h2 data-lang="en" style="display:none">Introduction</h2>
+    </div>
+    <p data-lang="ja">
+      <!-- ↓ 開発者名・アプリ名を変更してください -->
+      本プライバシーポリシーは、<strong>【開発者名】</strong>（以下「当社」）が提供する
+      <strong>「単位変換アプリ」</strong>（以下「本アプリ」）における個人情報の取り扱いについて説明します。
+      本アプリをご利用いただくことで、本ポリシーに同意いただいたものとみなします。
+    </p>
+    <p data-lang="en" style="display:none">
+      This Privacy Policy describes how <strong>[Developer Name]</strong> ("we", "us", or "our")
+      handles information in connection with the <strong>Unit Converter App</strong> ("the App").
+      By using the App, you agree to the practices described in this policy.
+    </p>
+  </div>
+
+  <!-- 2. 収集する情報 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon">📊</div>
+      <h2 data-lang="ja">収集する情報</h2>
+      <h2 data-lang="en" style="display:none">Information We Collect</h2>
+    </div>
+    <p data-lang="ja">本アプリは、以下の情報を収集する場合があります：</p>
+    <p data-lang="en" style="display:none">The App may collect the following types of information:</p>
+    <ul>
+      <li data-lang="ja">広告表示のために、広告IDおよびデバイス情報（Google AdMobが収集）</li>
+      <li data-lang="en" style="display:none">Advertising ID and device information for ad display (collected by Google AdMob)</li>
+      <li data-lang="ja">アプリの利用状況データ（クラッシュレポートなど、匿名化された形式）</li>
+      <li data-lang="en" style="display:none">App usage data (e.g., crash reports, in anonymized form)</li>
+    </ul>
+    <div class="highlight-box" data-lang="ja">
+      ✅ 本アプリはユーザーの個人を特定できる情報（氏名・メールアドレス等）を収集しません。
+    </div>
+    <div class="highlight-box" data-lang="en" style="display:none">
+      ✅ The App does not collect personally identifiable information such as names or email addresses.
+    </div>
+  </div>
+
+  <!-- 3. 広告について -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon">📢</div>
+      <h2 data-lang="ja">広告について</h2>
+      <h2 data-lang="en" style="display:none">Advertising</h2>
+    </div>
+    <p data-lang="ja">
+      本アプリはGoogle AdMobを使用して広告を表示しています。AdMobはユーザーの興味に合わせた
+      広告を配信するために一部のデータを収集・利用する場合があります。
+      詳細はGoogleの
+      <a href="https://policies.google.com/privacy" target="_blank" style="color:var(--accent)">プライバシーポリシー</a>
+      をご参照ください。
+    </p>
+    <p data-lang="en" style="display:none">
+      The App uses Google AdMob to display advertisements. AdMob may collect and use certain data
+      to serve personalized ads. Please refer to
+      <a href="https://policies.google.com/privacy" target="_blank" style="color:var(--accent)">Google's Privacy Policy</a>
+      for more details.
+    </p>
+  </div>
+
+  <!-- 4. 情報の利用目的 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon">🎯</div>
+      <h2 data-lang="ja">情報の利用目的</h2>
+      <h2 data-lang="en" style="display:none">How We Use Information</h2>
+    </div>
+    <ul>
+      <li data-lang="ja">アプリの品質向上・不具合の修正</li>
+      <li data-lang="en" style="display:none">Improving app quality and fixing bugs</li>
+      <li data-lang="ja">広告の表示・最適化</li>
+      <li data-lang="en" style="display:none">Displaying and optimizing advertisements</li>
+      <li data-lang="ja">利用傾向の分析（匿名・集計データのみ）</li>
+      <li data-lang="en" style="display:none">Analyzing usage trends (anonymous and aggregated data only)</li>
+    </ul>
+  </div>
+
+  <!-- 5. 第三者への提供 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon">🤝</div>
+      <h2 data-lang="ja">第三者への情報提供</h2>
+      <h2 data-lang="en" style="display:none">Third-Party Sharing</h2>
+    </div>
+    <p data-lang="ja">
+      当社は、法律に基づく場合または本ポリシーに記載された広告サービス（Google AdMob）を除き、
+      収集した情報を第三者に販売・共有・開示しません。
+    </p>
+    <p data-lang="en" style="display:none">
+      We do not sell, share, or disclose collected information to third parties, except as required
+      by law or as described in this policy (e.g., Google AdMob).
+    </p>
+  </div>
+
+  <!-- 6. お子様のプライバシー -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon">👶</div>
+      <h2 data-lang="ja">お子様のプライバシー</h2>
+      <h2 data-lang="en" style="display:none">Children's Privacy</h2>
+    </div>
+    <p data-lang="ja">
+      本アプリは13歳未満の方から意図的に個人情報を収集しません。
+      13歳未満のお子様に関する情報が収集されていると判明した場合は、速やかに削除します。
+    </p>
+    <p data-lang="en" style="display:none">
+      The App does not knowingly collect personal information from children under 13.
+      If we learn that such information has been collected, we will promptly delete it.
+    </p>
+  </div>
+
+  <!-- 7. ポリシーの変更 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon">🔄</div>
+      <h2 data-lang="ja">プライバシーポリシーの変更</h2>
+      <h2 data-lang="en" style="display:none">Changes to This Policy</h2>
+    </div>
+    <p data-lang="ja">
+      本ポリシーは予告なく変更される場合があります。変更後のポリシーはこのページに掲載され、
+      掲載時点から効力を生じるものとします。定期的にご確認ください。
+    </p>
+    <p data-lang="en" style="display:none">
+      This policy may be updated without prior notice. Changes will be posted on this page
+      and take effect upon posting. Please review this page periodically.
+    </p>
+  </div>
+
+  <!-- 連絡先 -->
+  <div class="contact-card">
+    <h2 data-lang="ja">お問い合わせ</h2>
+    <h2 data-lang="en" style="display:none">Contact Us</h2>
+    <p data-lang="ja">プライバシーに関するご質問はサポートページよりお問い合わせください。</p>
+    <p data-lang="en" style="display:none">For questions about this policy, please visit our support page.</p>
+    <!-- ↓ サポートページのURLに変更してください -->
+    <a href="support.html" data-lang="ja">サポートページへ</a>
+    <a href="support.html" data-lang="en" style="display:none">Go to Support Page</a>
+  </div>
+</main>
+
+<footer>
+  <!-- ↓ 開発者名を変更してください -->
+  <p>© 2026 【開発者名】. All rights reserved.</p>
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      el.style.display = el.dataset.lang === lang ? '' : 'none';
+    });
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent.trim() === (lang === 'ja' ? '日本語' : 'English'));
+    });
+    document.documentElement.lang = lang;
+  }
+</script>
+
+</body>
+</html>

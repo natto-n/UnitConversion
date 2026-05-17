@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>サポート / Support</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent: #4A90E2;
+      --accent-light: #e8f1fb;
+      --text: #1a1a2e;
+      --text-secondary: #5a6070;
+      --bg: #f7f9fc;
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', 'Noto Sans JP', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    header {
+      background: linear-gradient(135deg, #2e7d6b 0%, #4A90E2 100%);
+      padding: 60px 24px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='20' cy='20' r='10'/%3E%3C/g%3E%3C/svg%3E");
+    }
+    header .icon { font-size: 48px; margin-bottom: 16px; display: block; animation: float 3s ease-in-out infinite; }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+    header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; }
+    header p.subtitle { color: rgba(255,255,255,0.8); font-size: 14px; margin-top: 8px; }
+
+    .lang-toggle {
+      display: flex; justify-content: center; gap: 8px; padding: 20px 24px 0;
+    }
+    .lang-btn {
+      padding: 8px 20px; border: 2px solid var(--accent); border-radius: 999px;
+      background: transparent; color: var(--accent); font-size: 13px; font-weight: 600;
+      cursor: pointer; transition: all 0.2s; font-family: inherit;
+    }
+    .lang-btn.active { background: var(--accent); color: #fff; }
+    .lang-btn:hover:not(.active) { background: var(--accent-light); }
+
+    main { max-width: 760px; margin: 32px auto 60px; padding: 0 20px; }
+
+    /* ── アプリ情報バナー ── */
+    .app-banner {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+    .app-icon {
+      width: 72px; height: 72px;
+      background: linear-gradient(135deg, var(--accent), #2563c7);
+      border-radius: 18px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 36px;
+      flex-shrink: 0;
+      box-shadow: 0 4px 16px rgba(74,144,226,0.3);
+    }
+    .app-info h2 { font-size: 18px; font-weight: 700; }
+    .app-info p  { font-size: 13px; color: var(--text-secondary); margin-top: 2px; }
+    .version-badge {
+      display: inline-block;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-top: 6px;
+    }
+
+    /* ── セクション ── */
+    .section-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin: 28px 0 12px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      overflow: hidden;
+      margin-bottom: 16px;
+      animation: slideUp 0.4s ease both;
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── FAQ アコーディオン ── */
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question {
+      width: 100%; background: none; border: none; padding: 18px 24px;
+      text-align: left; font-size: 15px; font-weight: 600;
+      color: var(--text); cursor: pointer; display: flex;
+      justify-content: space-between; align-items: center; gap: 12px;
+      font-family: inherit; transition: background 0.15s;
+    }
+    .faq-question:hover { background: var(--accent-light); }
+    .faq-question .arrow {
+      width: 24px; height: 24px; background: var(--accent-light);
+      border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; flex-shrink: 0;
+      transition: transform 0.25s; color: var(--accent); font-size: 13px;
+    }
+    .faq-question.open .arrow { transform: rotate(180deg); }
+    .faq-answer {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      padding: 0 24px;
+    }
+    .faq-answer.open {
+      max-height: 400px;
+      padding: 0 24px 18px;
+    }
+    .faq-answer p { font-size: 14px; color: var(--text-secondary); line-height: 1.85; }
+
+    /* ── お問い合わせ ── */
+    .contact-section {
+      background: linear-gradient(135deg, #2e7d6b 0%, #4A90E2 100%);
+      border-radius: var(--radius);
+      padding: 32px;
+      text-align: center;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+    .contact-section h2 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+    .contact-section p  { font-size: 14px; color: rgba(255,255,255,0.85); margin-bottom: 20px; }
+    .contact-email {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.2); color: #fff; text-decoration: none;
+      padding: 12px 28px; border-radius: 999px; font-weight: 600; font-size: 15px;
+      border: 1px solid rgba(255,255,255,0.3); transition: background 0.2s;
+    }
+    .contact-email:hover { background: rgba(255,255,255,0.3); }
+
+    /* ── リンク行 ── */
+    .link-row {
+      display: flex; align-items: center; gap: 14px;
+      padding: 16px 24px; border-bottom: 1px solid var(--border);
+      text-decoration: none; color: var(--text);
+      transition: background 0.15s;
+    }
+    .link-row:last-child { border-bottom: none; }
+    .link-row:hover { background: var(--accent-light); }
+    .link-row .row-icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: var(--accent-light); display: flex;
+      align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0;
+    }
+    .link-row .row-text strong { display: block; font-size: 15px; font-weight: 600; }
+    .link-row .row-text span  { font-size: 12px; color: var(--text-secondary); }
+    .link-row .chevron { margin-left: auto; color: var(--text-secondary); font-size: 18px; }
+
+    footer {
+      text-align: center; padding: 20px;
+      color: var(--text-secondary); font-size: 13px;
+    }
+
+    [data-lang="en"] { display: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <span class="icon">🛠️</span>
+  <h1 data-lang="ja">サポート</h1>
+  <h1 data-lang="en" style="display:none">Support</h1>
+  <!-- ↓ アプリ名を変更してください -->
+  <p class="subtitle" data-lang="ja">単位変換アプリ</p>
+  <p class="subtitle" data-lang="en" style="display:none">Unit Converter App</p>
+</header>
+
+<div class="lang-toggle">
+  <button class="lang-btn active" onclick="setLang('ja')">日本語</button>
+  <button class="lang-btn" onclick="setLang('en')">English</button>
+</div>
+
+<main>
+
+  <!-- アプリ情報 -->
+  <div class="app-banner">
+    <div class="app-icon">📐</div>
+    <div class="app-info">
+      <!-- ↓ アプリ名・バージョンを変更してください -->
+      <h2 data-lang="ja">単位変換アプリ</h2>
+      <h2 data-lang="en" style="display:none">Unit Converter App</h2>
+      <p data-lang="ja">長さ・重さ・温度・面積・体積を変換</p>
+      <p data-lang="en" style="display:none">Convert length, weight, temperature, area & volume</p>
+      <span class="version-badge">Ver 1.0.0</span><!-- ↓ バージョン番号を変更 -->
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <p class="section-title" data-lang="ja">よくある質問</p>
+  <p class="section-title" data-lang="en" style="display:none">FAQ</p>
+
+  <div class="card">
+    <!-- Q1 -->
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span data-lang="ja">対応している単位を教えてください</span>
+        <span data-lang="en" style="display:none">What units are supported?</span>
+        <span class="arrow">▼</span>
+      </button>
+      <div class="faq-answer">
+        <p data-lang="ja">長さ（mm・cm・m・km・インチ・フィート・ヤード・マイル）、重さ（mg・g・kg・t・オンス・ポンド）、温度（℃・℉・K）、面積（mm²・cm²・m²・km²・ha・坪・ft²・エーカー）、体積（mL・L・m³・ティースプーン・テーブルスプーン・液量オンス・カップ・パイント・クォート・ガロンなど）に対応しています。</p>
+        <p data-lang="en" style="display:none">Supported: Length (mm, cm, m, km, in, ft, yd, mi), Weight (mg, g, kg, t, oz, lb), Temperature (°C, °F, K), Area (mm², cm², m², km², ha, tsubo, ft², ac), Volume (mL, L, m³, tsp, tbsp, fl oz, cup, pt, qt, gal).</p>
+      </div>
+    </div>
+    <!-- Q2 -->
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span data-lang="ja">オフラインでも使えますか？</span>
+        <span data-lang="en" style="display:none">Does it work offline?</span>
+        <span class="arrow">▼</span>
+      </button>
+      <div class="faq-answer">
+        <p data-lang="ja">はい、変換機能はすべてオフラインでご利用いただけます。広告の表示にはインターネット接続が必要な場合があります。</p>
+        <p data-lang="en" style="display:none">Yes, all conversion features work offline. An internet connection may be required for displaying ads.</p>
+      </div>
+    </div>
+    <!-- Q3 -->
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span data-lang="ja">計算結果が正しくないと感じます</span>
+        <span data-lang="en" style="display:none">The conversion result seems incorrect</span>
+        <span class="arrow">▼</span>
+      </button>
+      <div class="faq-answer">
+        <p data-lang="ja">本アプリは国際的に定められた換算係数を使用していますが、非常に大きな数値や小さな数値では浮動小数点の誤差が生じる場合があります。問題が継続する場合はお問い合わせください。</p>
+        <p data-lang="en" style="display:none">The app uses internationally standardized conversion factors. Floating-point precision issues may occur with extremely large or small values. If the problem persists, please contact us.</p>
+      </div>
+    </div>
+    <!-- Q4 -->
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span data-lang="ja">広告を非表示にできますか？</span>
+        <span data-lang="en" style="display:none">Can I remove ads?</span>
+        <span class="arrow">▼</span>
+      </button>
+      <div class="faq-answer">
+        <!-- ↓ 広告除去機能の有無に合わせて変更してください -->
+        <p data-lang="ja">現在のバージョンでは広告の非表示機能は提供しておりません。今後のアップデートで有料プランを検討しています。</p>
+        <p data-lang="en" style="display:none">The current version does not offer an ad-free option. We are considering a premium plan in a future update.</p>
+      </div>
+    </div>
+    <!-- Q5 -->
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span data-lang="ja">アプリが起動しない・クラッシュします</span>
+        <span data-lang="en" style="display:none">The app won't launch or keeps crashing</span>
+        <span class="arrow">▼</span>
+      </button>
+      <div class="faq-answer">
+        <p data-lang="ja">以下をお試しください：①アプリを完全に終了して再起動　②端末を再起動　③アプリを最新バージョンにアップデート。それでも解決しない場合はお問い合わせください。</p>
+        <p data-lang="en" style="display:none">Please try: ① Force-close and relaunch the app ② Restart your device ③ Update the app to the latest version. If the issue persists, please contact us.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- リンク集 -->
+  <p class="section-title" data-lang="ja">関連リンク</p>
+  <p class="section-title" data-lang="en" style="display:none">Links</p>
+
+  <div class="card">
+    <!-- ↓ href を実際のURLに変更してください -->
+    <a class="link-row" href="privacy_policy.html">
+      <div class="row-icon">🔒</div>
+      <div class="row-text">
+        <strong data-lang="ja">プライバシーポリシー</strong>
+        <strong data-lang="en" style="display:none">Privacy Policy</strong>
+        <span data-lang="ja">個人情報の取り扱いについて</span>
+        <span data-lang="en" style="display:none">How we handle your data</span>
+      </div>
+      <span class="chevron">›</span>
+    </a>
+    <a class="link-row" href="https://apps.apple.com" target="_blank"><!-- ↓ App StoreのURLに変更 -->
+      <div class="row-icon">⭐</div>
+      <div class="row-text">
+        <strong data-lang="ja">App Storeでレビューする</strong>
+        <strong data-lang="en" style="display:none">Rate on App Store</strong>
+        <span data-lang="ja">ご意見をお聞かせください</span>
+        <span data-lang="en" style="display:none">We'd love your feedback</span>
+      </div>
+      <span class="chevron">›</span>
+    </a>
+  </div>
+
+  <!-- お問い合わせ -->
+  <div class="contact-section">
+    <h2 data-lang="ja">お問い合わせ</h2>
+    <h2 data-lang="en" style="display:none">Contact Us</h2>
+    <p data-lang="ja">ご質問・ご要望・不具合報告はメールにてお受けしています。<br>通常2〜3営業日以内にご返信します。</p>
+    <p data-lang="en" style="display:none">For questions, feature requests, or bug reports, please email us.<br>We typically respond within 2–3 business days.</p>
+    <!-- ↓ メールアドレスを変更してください -->
+    <a href="mailto:support@example.com" class="contact-email">
+      ✉️ support@example.com
+    </a>
+  </div>
+
+</main>
+
+<footer>
+  <!-- ↓ 開発者名を変更してください -->
+  <p>© 2026 【開発者名】. All rights reserved.</p>
+</footer>
+
+<script>
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = answer.classList.contains('open');
+    // 全て閉じる
+    document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+    document.querySelectorAll('.faq-question').forEach(b => b.classList.remove('open'));
+    // クリックしたものだけ開く（既に開いていたら閉じる）
+    if (!isOpen) {
+      answer.classList.add('open');
+      btn.classList.add('open');
+    }
+  }
+
+  function setLang(lang) {
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      el.style.display = el.dataset.lang === lang ? '' : 'none';
+    });
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent.trim() === (lang === 'ja' ? '日本語' : 'English'));
+    });
+    document.documentElement.lang = lang;
+  }
+</script>
+
+</body>
+</html>
